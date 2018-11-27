@@ -1,6 +1,17 @@
 {
   "name": "ng-cemodel",
-  "version": "1.0.0",
+  "version": "1.0.1",
+  "keywords": [
+    "Angular",
+    "ng",
+    "contenteditable"
+  ],
+  "license": "SEE LICENSE IN LICENSE",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Passiverecords/ng-cemodel"
+  },
+  "homepage": "https://github.com/Passiverecords/ng-cemodel/blob/master/README.md",
   "peerDependencies": {
     "@angular/common": "^7.0.0",
     "@angular/core": "^7.0.0",
