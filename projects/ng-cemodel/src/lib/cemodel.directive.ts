@@ -39,6 +39,7 @@ export class CeModelDirective
     private el: ElementRef,
     private renderer: Renderer2
   ) {
+    this.text = '';
     this.placeholder = '';
     this.onChange = () => {};
     this.onTouched = () => {};
@@ -57,12 +58,18 @@ export class CeModelDirective
         this.el.nativeElement.offsetWidth + 'px'
       );
     }
+
+    if (!this.text) {
+      this.showPlaceholder();
+    }
   }
 
   writeValue(text: string): void {
     this.text = text;
-    this.el.nativeElement.innerText = this.text;
-    this.onChange(this.el.nativeElement.innerText);
+    if (this.text) {
+      this.el.nativeElement.innerText = this.text;
+      this.onChange(this.el.nativeElement.innerText);
+    }
   }
 
   registerOnChange(fn: (text: string) => void): void {
