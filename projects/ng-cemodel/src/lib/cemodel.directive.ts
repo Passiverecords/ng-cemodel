@@ -69,7 +69,9 @@ export class CeModelDirective
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['placeholder'] && changes['placeholder'].previousValue !== changes['placeholder'].currentValue ) {
       this.placeholder = changes['placeholder'].currentValue;
-      this.showPlaceholder();
+      if (!this.text) {
+        this.showPlaceholder();
+      }
     }
   }
 
