@@ -6,7 +6,9 @@ import {
   Renderer2,
   OnInit,
   HostBinding,
-  forwardRef
+  forwardRef,
+  SimpleChanges,
+  OnChanges
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -21,7 +23,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ]
 })
 export class CeModelDirective
-  implements OnInit, ControlValueAccessor {
+  implements OnInit, OnChanges, ControlValueAccessor {
   @Input()
   private placeholder: string;
 
@@ -60,6 +62,13 @@ export class CeModelDirective
     }
 
     if (!this.text) {
+      this.showPlaceholder();
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['placeholder'] && changes['placeholder'].previousValue !== changes['placeholder'].currentValue ) {
+      this.placeholder = changes['placeholder'].currentValue;
       this.showPlaceholder();
     }
   }
