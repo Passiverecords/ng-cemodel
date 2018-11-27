@@ -48,19 +48,6 @@ export class CeModelDirective
   }
 
   ngOnInit(): void {
-    // set the minimum width to either:
-    // * the current element length (length of placeholder)
-    // * 25px
-    if (this.el.nativeElement.offsetWidth === 0) {
-      this.renderer.setStyle(this.el.nativeElement, 'min-width', '25px');
-    } else {
-      this.renderer.setStyle(
-        this.el.nativeElement,
-        'min-width',
-        this.el.nativeElement.offsetWidth + 'px'
-      );
-    }
-
     if (!this.text) {
       this.showPlaceholder();
     }
