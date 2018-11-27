@@ -65,10 +65,9 @@ export class CeModelDirective
   }
 
   writeValue(text: string): void {
-    this.text = text;
-    if (this.text) {
-      this.el.nativeElement.innerText = this.text;
-      this.onChange(this.el.nativeElement.innerText);
+    if (text) {
+      this.text = text;
+      this.hidePlaceholder();
     }
   }
 
