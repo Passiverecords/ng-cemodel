@@ -11,7 +11,7 @@ import {
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
-  selector: '[ceModel]',
+  selector: '[contenteditable]',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -33,7 +33,6 @@ export class CeModelDirective
 
   // stylings
   @HostBinding('style.outline') outline = 'none';
-  @HostBinding('style.display') display = 'inline-block';
   @HostBinding('style.border') border = '1px dashed transparent';
 
   constructor(
