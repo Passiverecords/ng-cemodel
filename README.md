@@ -40,7 +40,6 @@ import { FormsModule } from '@angular/forms';
 ```html
 <h1 name="title"
     contenteditable
-    ceModel
     [(ngModel)]="title"
     placeholder="it has a placeholder too!">
 </h1>
