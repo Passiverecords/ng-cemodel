@@ -54,7 +54,7 @@ export class CeModelDirective
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['placeholder'] && changes['placeholder'].previousValue !== changes['placeholder'].currentValue ) {
+    if (changes['placeholder'] && changes['placeholder'].previousValue !== changes['placeholder'].currentValue) {
       this.placeholder = changes['placeholder'].currentValue;
       if (!this.text) {
         this.showPlaceholder();
@@ -63,10 +63,8 @@ export class CeModelDirective
   }
 
   writeValue(text: string): void {
-    if (text) {
-      this.text = text;
-      this.hidePlaceholder();
-    }
+    this.text = text;
+    text && text.length ? this.hidePlaceholder() : this.showPlaceholder();
   }
 
   registerOnChange(fn: (text: string) => void): void {
