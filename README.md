@@ -1,7 +1,7 @@
 
 # ng-cemodel
 
-Angular directive allowing you to bind ngmodel to contenteditable, complete with placeholder support
+Angular 4+ directive allowing you to bind ngmodel to contenteditable, complete with placeholder support
 
 # Installation
 
