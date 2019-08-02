@@ -24,8 +24,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class CeModelDirective
   implements OnInit, OnChanges, ControlValueAccessor {
-  @Input()
-  private placeholder: string;
+  @Input() private placeholder: string;
+  @Input('contenteditable') isActivated: any;
 
   private text: string;
   private isEditing: boolean;
@@ -51,6 +51,7 @@ export class CeModelDirective
     if (!this.text) {
       this.showPlaceholder();
     }
+    this.checkIfActivated();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -92,6 +93,7 @@ export class CeModelDirective
 
   @HostListener('focus')
   onFocus() {
+    if (this.isActivated) {
     this.isEditing = true;
     this.hidePlaceholder();
     this.setBorder();
@@ -106,6 +108,14 @@ export class CeModelDirective
   onMouseLeave() {
     if (!this.isEditing) {
       this.removeBorder();
+    }
+  }
+
+  checkIfActivated() {
+    // The default value for an attribute is '',
+    // and <p contenteditable></p> should enable contenteditable
+    if (this.isActivated === '') {
+      this.isActivated = true;
     }
   }
 
