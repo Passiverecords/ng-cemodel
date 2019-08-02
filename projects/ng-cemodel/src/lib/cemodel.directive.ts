@@ -33,10 +33,6 @@ export class CeModelDirective
   private onChange: (text: string) => void;
   private onTouched: () => void;
 
-  // stylings
-  @HostBinding('style.outline') outline = 'none';
-  @HostBinding('style.border') border = '1px dashed transparent';
-
   constructor(
     private el: ElementRef,
     private renderer: Renderer2
@@ -82,7 +78,6 @@ export class CeModelDirective
     if (this.el.nativeElement.innerText === '') {
       this.showPlaceholder();
     }
-    this.removeBorder();
   }
 
   @HostListener('input')
@@ -94,20 +89,8 @@ export class CeModelDirective
   @HostListener('focus')
   onFocus() {
     if (this.isActivated) {
-    this.isEditing = true;
-    this.hidePlaceholder();
-    this.setBorder();
-  }
-
-  @HostListener('mouseenter')
-  onMouseEnter() {
-    this.setBorder();
-  }
-
-  @HostListener('mouseleave')
-  onMouseLeave() {
-    if (!this.isEditing) {
-      this.removeBorder();
+      this.isEditing = true;
+      this.hidePlaceholder();
     }
   }
 
@@ -127,13 +110,5 @@ export class CeModelDirective
   hidePlaceholder() {
     this.el.nativeElement.innerText = this.text;
     this.renderer.removeStyle(this.el.nativeElement, 'color');
-  }
-
-  setBorder() {
-    this.renderer.setStyle(this.el.nativeElement, 'border-color', 'grey');
-  }
-
-  removeBorder() {
-    this.renderer.setStyle(this.el.nativeElement, 'border-color', 'transparent');
   }
 }
