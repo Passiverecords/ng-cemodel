@@ -3,7 +3,9 @@
   "version": "2.0.0",
   "keywords": [
     "Angular",
+    "Angular2",
     "ng",
+    "ngx",
     "contenteditable"
   ],
   "license": "MIT",
